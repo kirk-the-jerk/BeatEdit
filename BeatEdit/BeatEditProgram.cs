@@ -572,7 +572,7 @@ namespace BeatEdit
         static void Main(string[] args)
         {
 //            args = new string[] { "f2201bb27a2c23d2fcad24718d1b30ba.trackdata.txt", "-e0,8", "-i999,0", "-l999", "-p"};
-//            args = new string[] { "f2201bb27a2c23d2fcad24718d1b30ba.trackdata.txt", "-h*" };
+            args = new string[] { "f2201bb27a2c23d2fcad24718d1b30ba.trackdata.txt", "-h" };
 
             try
             {
