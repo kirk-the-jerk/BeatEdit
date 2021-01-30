@@ -46,7 +46,7 @@ namespace BeatEdit
                 {
                     if (s == "-h" || s == "-?")
                     {
-                        Console.WriteLine("BEATEDIT v0.1 - reddit.com/u/glonq");
+                        Console.WriteLine("BEATEDIT v0.2 - reddit.com/u/glonq");
                         Console.WriteLine("Syntax:  BEATEDIT filename.txt -param -param -param");
                         Console.WriteLine("...where 'param' is:");
                         Console.WriteLine("   -h        help");
@@ -55,8 +55,9 @@ namespace BeatEdit
                         Console.WriteLine("   -hX       help and examples for command X");
                         Console.WriteLine("   -eX       edit beat; set EnergyLevel to X");
                         Console.WriteLine("   -eX,Y     edit beat; set EnergyLevel to X but only if current value is Y");
-                        Console.WriteLine("   -iXXX     edit one beat at index XXX");
-                        Console.WriteLine("   -iXXX,YYY edit all beats between index XXX and YYY (inclusive)");
+                        Console.WriteLine("   -i*       change all beats");
+                        Console.WriteLine("   -iXXX     change one beat at index XXX");
+                        Console.WriteLine("   -iXXX,YYY change all beats between index XXX and YYY (inclusive)");
                         Console.WriteLine("   -mN       only edit beats that are a multiple of N");
                         Console.WriteLine("   -lN       limit; stop after N beats are changed (ignores unchanged beats)");
                         Console.WriteLine("   -v        view everything");
@@ -177,7 +178,10 @@ namespace BeatEdit
 
         private void ParseIndexParam(string s)
         {
-            // -iNNN or -iXXX,YYY
+            // -iNNN or -iXXX,YYY or -i*
+
+            if (s.Length < 3)
+                throw new Exception("missing index for -i");
 
             int i = s.IndexOf(',');
             if (i > 0)
@@ -185,6 +189,12 @@ namespace BeatEdit
                 _indexStart = Convert.ToInt32(s.Substring(2, i-2));
                 _indexEnd = Convert.ToInt32(s.Substring(i + 1));
                 _indexDirection = (_indexStart <= _indexEnd) ? 1 : -1;
+            }
+            else if (s[2] == '*')
+            {
+                _indexStart = 0;
+                _indexEnd = 9999;
+                _indexDirection = 1;
             }
             else
             {
@@ -235,10 +245,10 @@ namespace BeatEdit
                         Console.WriteLine("   sets the last (becuase index is 'rounded down') beat to engery level 2,");
                         Console.WriteLine("   *but only if it's currently 0*");
                         Console.WriteLine();
-                        Console.WriteLine("beatview filename.txt -e3 -i0,9999");
+                        Console.WriteLine("beatview filename.txt -e3 -i*");
                         Console.WriteLine("   sets every beat to engery level 3,");
                         Console.WriteLine();
-                        Console.WriteLine("beatview filename.txt -e3 -i0,9999 -m2");
+                        Console.WriteLine("beatview filename.txt -e3 -i* -m2");
                         Console.WriteLine("   sets every *second* beat to engery level 3");
                         Console.WriteLine();
                         Console.WriteLine("beatview filename.txt -e1 -i9999,0 -l4");
@@ -269,12 +279,13 @@ namespace BeatEdit
 
                     case 'i':
                         Console.WriteLine("The -i parameter gives the index (number) for what beats to change");
-                        Console.WriteLine("   -iXXX edits (only) beat XXX");
-                        Console.WriteLine("   -iXXX,YYY edits all the beats between (inclusive) XXX and YYY");
-                        Console.WriteLine("   if Y > X, then we edit the beats backwards; counting down from Y to X");
+                        Console.WriteLine("   -i* changes all beats");
+                        Console.WriteLine("   -iXXX changes (only) beat XXX");
+                        Console.WriteLine("   -iXXX,YYY changes all the beats between (inclusive) XXX and YYY");
+                        Console.WriteLine("   if Y > X, then we change the beats backwards; counting down from Y to X");
                         Console.WriteLine("   if X or Y are too high (more than the # of beats), then we round it down");
                         Console.WriteLine("   ...so if you want to hit the end of the song, just use 9999");
-                        Console.WriteLine("   indexes start at zero, so use -i0 to edit the first beat");
+                        Console.WriteLine("   indexes start at zero, so use -i0 to change the first beat");
                         Console.WriteLine("   remember, you also need to specify *what energy level to set* using -e");
                         Console.WriteLine("   if you aren't sure what your edit will do, use -ve to tell you");
                         break;
@@ -379,8 +390,7 @@ namespace BeatEdit
 
                 if (_indexDirection == 0)
                 {
-                    if (_indexStart < 0 || _indexStart >= bl.Count)
-                        throw new Exception("index out of range");
+                    _indexStart = _indexEnd = Math.Min(bl.Count - 1, Math.Max(_indexStart, 0));
                 }
                 else // _indexStart == -1 or +1
                 {
@@ -571,7 +581,7 @@ namespace BeatEdit
     {
         static void Main(string[] args)
         {
-//            args = new string[] { "f2201bb27a2c23d2fcad24718d1b30ba.trackdata.txt", "-e0,8", "-i999,0", "-l999", "-p"};
+//            args = new string[] { "f2201bb27a2c23d2fcad24718d1b30ba.trackdata.txt", "-e9", "-i999", "-l3", "-ve"};
 //            args = new string[] { "f2201bb27a2c23d2fcad24718d1b30ba.trackdata.txt", "-h*" };
 
             try

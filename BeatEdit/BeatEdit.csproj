@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>0.1</Version>
+    <Version>0.2</Version>
     <Authors>reddit.com/u/glonq</Authors>
     <Description>A quick n dirty editor for BeatVR custom tracks.
 Much thanks to u/goodguy5000hd for inspiration!</Description>
