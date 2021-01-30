@@ -3,7 +3,7 @@
 This is a simple, quick BoxVR custom track editor that I wrote for fun,
 for the PC/Steam version of BoxVR/FitXR.
 
-It can:
+It is a windows console appliation that can:
 - Display the beats in a BoxVR custom track file.
 - Edit one/all/some beats in a BoxVR custom track file.
 
