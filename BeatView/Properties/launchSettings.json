@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "BeatView": {
+      "commandName": "Project",
+      "commandLineArgs": "f2201bb27a2c23d2fcad24718d1b30ba.trackdata.txt",
+      "workingDirectory": "C:\\Users\\kirk\\AppData\\LocalLow\\FITXR\\BoxVR\\Playlists\\TrackData"
+    }
+  }
+}

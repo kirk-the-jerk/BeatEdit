@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>0.1</Version>
+    <Authors>reddit.com/u/glonq</Authors>
+    <Description>A quick n dirty editor for BeatVR custom tracks.
+Much thanks to u/goodguy5000hd for inspiration!</Description>
+    <Copyright>reddit.com/u/glonq</Copyright>
+    <PackageProjectUrl>reddit.com/u/glonq</PackageProjectUrl>
+    <PackageLicenseExpression>don't financially profit from this; otherwise i don't give a damn</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NAudio" Version="1.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BeatFile\BeatFile.csproj" />
+  </ItemGroup>
+
+</Project>
