@@ -9,7 +9,7 @@ It is a windows console appliation that can:
 
 WARNING
 =======
-This is a "version 0.1" product.  I have put reasonable effort into it being robust and
+This is a "pre-release" product.  I have put reasonable effort into it being robust and
 reliable, but have done *minimal* testing on it.
 So please manually back up your BoxVR files before using this!
 I tested against the newest PC (Steam) version of BoxVR; IDK if this works with
@@ -17,7 +17,7 @@ older/newer/different versions.
 
 Installation instructions
 =========================
-- Download it from https://github.com/kirk-the-jerk/BeatEdit/releases/tag/0.1
+- Download it from https://github.com/kirk-the-jerk/BeatEdit/releases
 - There is no installer.
 - Copy all the files to your AppData\LocalLow\FITXR\BoxVR\Playlists\TrackData folder
 - ...and then run BEATEDIT from there
