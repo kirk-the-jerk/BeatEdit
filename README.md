@@ -115,30 +115,36 @@ Examples:
 
 beatview filename.txt -v
 
-   view details (beats and analysis)
+...view details (beats and analysis)
+
 
 beatview filename.txt -e2 -i0
 
-   set the first (index=0) beat to engery level 2
+...set the first (index=0) beat to engery level 2
+
 
 beatview filename.txt -e2,0 -i9999
 
-   sets the last (becuase index is 'rounded down') beat to engery level 2,
-   *but only if it's currently 0*
+...sets the last (becuase index is 'rounded down') beat to engery level 2,
+*but only if it's currently 0*
+
 
 beatview filename.txt -e3 -i0,9999
 
-   sets every beat to engery level 3,
+...sets every beat to engery level 3,
+
 
 beatview filename.txt -e3 -i0,9999 -m2
 
-   sets every *second* beat to engery level 3
+...sets every *second* beat to engery level 3
+
 
 beatview filename.txt -e1 -i9999,0 -l4
 
-   sets the last 4 beats to engery level 1
+...sets the last 4 beats to engery level 1
    (because -i9999,0 means to start at the end and work backwards)
    (and -l4 means to stop after a limit of 4 beats have been changed
+
 
 Remember
 
