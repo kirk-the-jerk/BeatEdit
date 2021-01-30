@@ -17,6 +17,7 @@ older/newer/different versions.
 
 Installation instructions
 =========================
+- Download it from https://github.com/kirk-the-jerk/BeatEdit/releases/tag/0.1
 - There is no installer.
 - Copy all the files to your AppData\LocalLow\FITXR\BoxVR\Playlists\TrackData folder
 - ...and then run BEATEDIT from there
