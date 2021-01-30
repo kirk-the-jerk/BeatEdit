@@ -3,7 +3,7 @@
 This is a simple, quick BoxVR custom track editor that I wrote for fun,
 for the PC/Steam version of BoxVR/FitXR.
 
-It can:
+It is a windows console appliation that can:
 - Display the beats in a BoxVR custom track file.
 - Edit one/all/some beats in a BoxVR custom track file.
 
@@ -17,12 +17,24 @@ older/newer/different versions.
 
 Installation instructions
 =========================
+- Download it from https://github.com/kirk-the-jerk/BeatEdit/releases/tag/0.1
 - There is no installer.
 - Copy all the files to your AppData\LocalLow\FITXR\BoxVR\Playlists\TrackData folder
 - ...and then run BEATEDIT from there
 
 How to use BEATEDIT
 ===================
+
+Summary
+-------
+To change a song to "all punches, no squats or delays", do:
+
+   BEATEDIT filename.txt -e2 -i0,8888 -wb
+
+
+Details
+-------
+
 Syntax:  BEATEDIT filename.txt -param -param -param
 ...where 'param' is:
    -h        help
