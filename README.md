@@ -28,6 +28,7 @@ How to use BEATEDIT
 Summary
 -------
 To change a song to "all punches, no squats or delays", do:
+
    BEATEDIT filename.txt -e2 -i0,8888 -wb
 
 
