@@ -48,10 +48,12 @@ Syntax:  BEATEDIT filename.txt -param -param -param
    -eX       edit beat; set EnergyLevel to X
    
    -eX,Y     edit beat; set EnergyLevel to X but only if current value is Y
+
+   -i*       change all beats
+
+   -iXXX     change one beat at index XXX
    
-   -iXXX     edit one beat at index XXX
-   
-   -iXXX,YYY edit all beats between index XXX and YYY (inclusive)
+   -iXXX,YYY change all beats between index XXX and YYY (inclusive)
    
    -mN       only edit beats that are a multiple of N
    
@@ -83,12 +85,12 @@ The -e parameter says what type of edit to do
 
 The -i parameter gives the index (number) for what beats to change
 
-   -iXXX edits (only) beat XXX
-   -iXXX,YYY edits all the beats between (inclusive) XXX and YYY
-   if Y > X, then we edit the beats backwards; counting down from Y to X
+   -iXXX changes (only) beat XXX
+   -iXXX,YYY changes all the beats between (inclusive) XXX and YYY
+   if Y > X, then we change the beats backwards; counting down from Y to X
    if X or Y are too high (more than the # of beats), then we round it down
    ...so if you want to hit the end of the song, just use 9999
-   indexes start at zero, so use -i0 to edit the first beat
+   indexes start at zero, so use -i0 to change the first beat
    remember, you also need to specify *what energy level to set* using -e
    if you aren't sure what your edit will do, use -ve to tell you
 
@@ -141,12 +143,12 @@ beatview filename.txt -e2,0 -i9999
 *but only if it's currently 0*
 
 
-beatview filename.txt -e3 -i0,9999
+beatview filename.txt -e3 -i*
 
 ...sets every beat to engery level 3,
 
 
-beatview filename.txt -e3 -i0,9999 -m2
+beatview filename.txt -e3 -i* -m2
 
 ...sets every *second* beat to engery level 3
 
